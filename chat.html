@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta content="ie=edge" http-equiv="X-UA-Compatible">
+	<title>La tchatche de ta vie !</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+	<link href="css/style.css" rel="stylesheet">
+</head>
+
+<body class='chat container-fluid'>
+	<div class="row content align-items-end">
+		<section id="messages" class="col-md-8 col-sm-12">
+			<!-- les messages ici -->
+			<div class="rec_msg_box">
+				<p class="rec_msg message">Le messaghgfdrseqsrtyguio iygdtresdtyguiojpk^lkoijuhytredrtfygje</p>
+				<p class="msg_infos">Les infos du message en petit</p>
+			</div>
+			<div class="sent_msg_box">
+				<p class="sent_msg message">Le meskjhygtfrdedrftyguhjikoiuytrerftgyhjuhygtfrertyuisage</p>
+				<p class="msg_infos">Les infos du message en petit</p>
+			</div>
+			<div class="rec_msg_box">
+				<p class="rec_msg message">Le messaretyyyytrezazerge</p>
+				<p class="msg_infos">Les infos du message en petit</p>
+			</div>
+			<div class="sent_msg_box">
+				<p class="sent_msg message">Le message</p>
+				<p class="msg_infos">Les infos du message en petit</p>
+			</div>
+			<div class="sent_msg_box">
+				<p class="sent_msg message">Le messertezreyyyyyyyage</p>
+				<p class="msg_infos">Les infos du message en petit</p>
+			</div>
+		</section>
+		<aside id="saisie" class="col-md-4 col-sm-12">
+			<h2 class="d-sm-none d-md-block">Discussion : <span></span></h2>
+			Connecté en tant que <strong id="pseudo">-</strong>
+			<form class="d-flex flex-column">
+				<textarea cols="30" id="contenu" name="" rows="10"></textarea>
+				<button id="submit"><i class="fas fa-paper-plane"></i></button>
+				<button type="button" id="exit" class="btn btn-light">Quitter la conversation</button>
+			</form>
+		</aside>
+	</div>
+
+	<script src="js/chat.js" type="module"></script>
+</body>
+
+</html>
