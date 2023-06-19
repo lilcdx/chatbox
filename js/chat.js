@@ -6,32 +6,48 @@ function ajaxCallPHP(endpoint, msg) {
   )
 }
 
-function ajaxCallPHP2(endpoint) {
+function ajax(endpoint) {
     const id = sessionStorage.getItem("discussion");
     fetch(
       `./php/controller.php?action=${endpoint}&id=${id}`
     )
-      .then((response) => console.log(response.text()))
-    //   .then((response) => {
-    //     let res = response.message;
-    //     // if (res != false){
+      .then((response) => response.json())
+      .then((response) => {
+        for (let res of response){
+          let sender = "rec";
+          if(res.Pseudo == sessionStorage.getItem("pseudo")){
+            sender = "sent";
+          }
+          afficherMsg(sender, res);
+        }
+      //   let res = response.message;
+      //   // if (res != false){
           
-    //   console.log(res);
-    //     sessionStorage.setItem("message", res);
-    //     // } else {
-    //     //     document.querySelector(`#${endpoint} h3`).insertAdjacentHTML("afterend", `<p>${errMsg}</p>`);
-    //     // }
-    //   });
+      // console.log(res);
+      //   sessionStorage.setItem("message", res);
+      //   // } else {
+      //   //     document.querySelector(`#${endpoint} h3`).insertAdjacentHTML("afterend", `<p>${errMsg}</p>`);
+      //   // }
+      });
   }
 
 
 function envoyer() {
   const msg = document.querySelector("#contenu").value;
   ajaxCallPHP("addMessage", msg);
+  afficherAllMsg();
 }
 
-function afficherMsg(){
-    ajaxCallPHP2("getMessages");
+function afficherAllMsg(){
+    ajax("getMessages");
+}
+
+function afficherMsg(sender, response){
+  document.querySelector("#messages").insertAdjacentHTML("beforeend", 
+  `<div class="${sender}_msg_box">
+    <p class="${sender}_msg message">${response.Contenu}</p>
+    <p class="msg_infos">Envoyé par ${response.Pseudo} le ${response.Tempo}</p>
+  </div>`)
 }
 
 document.querySelector("#pseudo").innerHTML = sessionStorage.getItem("pseudo");
@@ -42,5 +58,5 @@ document.querySelector("#exit").addEventListener("click", () => {
   location.href = "./#";
 })
 
-afficherMsg();
+afficherAllMsg();
 

@@ -1,17 +1,6 @@
 function ajaxCallPHP(endpoint, name, errMsg) {
-  const headers = {
-    "Content-Type": "application/json",
-    "Access-Control-Origin": "*",
-  };
-  const data = {
-    "name": name,
-  };
-  fetch(`./php/controller.php?action=${endpoint}`, {
-    method: "POST",
-    headers: headers,
-    body: JSON.stringify(data),
-  })
-    .then((response) => console.log(response.json()))
+  fetch(`./php/controller.php?action=${endpoint}&name=${name}`)
+    .then((response) => response.json())
     .then((response) => {
       let res = response.discussion;
       if (res != false) {

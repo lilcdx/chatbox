@@ -42,24 +42,24 @@ if(array_key_exists("action", $_GET)){
              * Vérifie qu'une discussion existe
              * Si elle existe, retourne son id, sinon retourne false
              */
-                // $disc = new Discussion();
-                // $name = $_GET["name"];
-                // if ($disc->exists($name)){
-                //     $id = $disc->getId($name);
-                //     echo json_encode(["discussion" => $id]);
-                // } else {
-                //     echo json_encode(["discussion" => false]);
-                // }
-                if(array_key_exists("name", $_POST)){
-                    $disc = new Discussion();
-                    $name = $_POST["name"];
-                    if ($disc->exists($name)){
-                        $id = $disc->getId($name);
-                        echo json_encode(["discussion" => $id]);
-                    } else {
-                        echo json_encode(["discussion" => false]);
-                    }
+                $disc = new Discussion();
+                $name = $_GET["name"];
+                if ($disc->exists($name)){
+                    $id = $disc->getId($name);
+                    echo json_encode(["discussion" => $id]);
+                } else {
+                    echo json_encode(["discussion" => false]);
                 }
+                // if(array_key_exists("name", $_POST)){
+                //     $disc = new Discussion();
+                //     $name = $_POST["name"];
+                //     if ($disc->exists($name)){
+                //         $id = $disc->getId($name);
+                //         echo json_encode(["discussion" => $id]);
+                //     } else {
+                //         echo json_encode(["discussion" => false]);
+                //     }
+                // }
             
             break;
         case "addMessage":
@@ -82,6 +82,7 @@ if(array_key_exists("action", $_GET)){
              */
             // if(array_key_exists("id", $_POST)){
                 // $id = trim($_POST["id"]);
+                $id = $_GET["id"];
                 $message = new Message();
                 $result = $message->get($id);
                 echo json_encode($result);
